@@ -10,7 +10,6 @@
 
 // ⚠️  PASTE YOUR OPENWEATHER API KEY BELOW
 // Get a free key at: https://openweathermap.org/api
-const API_KEY = "0475a216eb0f467969b8c2c5c875ba85";
 
 // Base URL for current weather endpoint (metric = Celsius)
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
