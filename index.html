@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherNow By M1KE</title>
+
+    <!-- Google Fonts: Syne (display) + DM Sans (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- =============================================
+         ANIMATED BACKGROUND LAYER
+         Changes gradient based on weather condition
+         ============================================= -->
+    <div class="bg-layer" id="bgLayer"></div>
+
+    <!-- =============================================
+         FLOATING PARTICLES (decorative orbs)
+         ============================================= -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- =============================================
+         MAIN APP CARD
+         ============================================= -->
+    <main class="app-wrapper">
+      <div class="card" id="weatherCard">
+
+        <!-- ---------- HEADER ---------- -->
+        <header class="card-header">
+          <span class="app-logo">&#9729;</span>
+          <h1 class="app-title">WeatherNow By M1KE</h1>
+          <p class="app-subtitle">Live weather at your fingertips</p>
+        </header>
+
+        <!-- ---------- SEARCH FORM ---------- -->
+        <section class="search-section">
+          <div class="input-group">
+            <!-- City input field -->
+            <input
+              type="text"
+              id="cityInput"
+              class="city-input"
+              placeholder="Enter city name..."
+              autocomplete="off"
+              aria-label="City name"
+            />
+
+            <!-- Search button -->
+            <button
+              id="searchBtn"
+              class="search-btn"
+              aria-label="Search weather"
+            >
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <span>Search</span>
+            </button>
+          </div>
+
+          <!-- Error message (hidden by default) -->
+          <p class="error-msg" id="errorMsg" role="alert" aria-live="polite"></p>
+        </section>
+
+        <!-- ---------- LOADING STATE ---------- -->
+        <section class="loading-section" id="loadingSection" hidden>
+          <div class="spinner" aria-label="Loading..."></div>
+          <p class="loading-text">Fetching weather data...</p>
+        </section>
+
+        <!-- ---------- WEATHER RESULT CARD ---------- -->
+        <section class="result-section" id="resultSection" hidden>
+
+          <!-- City & Country -->
+          <div class="location-row">
+            <span class="pin-icon">&#128205;</span>
+            <h2 class="city-name" id="cityName">--</h2>
+            <span class="country-code" id="countryCode"></span>
+          </div>
+
+          <!-- Weather Icon (from OpenWeather CDN) -->
+          <div class="icon-wrapper">
+            <img
+              id="weatherIcon"
+              class="weather-icon"
+              src=""
+              alt="Weather icon"
+            />
+          </div>
+
+          <!-- Temperature -->
+          <div class="temp-display">
+            <span class="temp-value" id="tempValue">--</span>
+            <span class="temp-unit">°C</span>
+          </div>
+
+          <!-- Feels like + condition label -->
+          <p class="condition-label" id="conditionLabel">--</p>
+          <p class="feels-like" id="feelsLike"></p>
+
+          <!-- Extra stats row -->
+          <div class="stats-row">
+
+            <div class="stat-item">
+              <span class="stat-icon">&#128166;</span>
+              <span class="stat-label">Humidity</span>
+              <span class="stat-value" id="humidity">--</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <span class="stat-icon">&#127788;</span>
+              <span class="stat-label">Wind</span>
+              <span class="stat-value" id="windSpeed">--</span>
+            </div>
+
+            <div class="stat-divider"></div>
+
+            <div class="stat-item">
+              <span class="stat-icon">&#128065;</span>
+              <span class="stat-label">Visibility</span>
+              <span class="stat-value" id="visibility">--</span>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ---------- FOOTER ---------- -->
+        <footer class="card-footer">
+          Powered by <a href="https://openweathermap.org/" target="_blank" rel="noopener">OpenWeather API</a>
+        </footer>
+
+      </div><!-- /card -->
+    </main>
+
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
